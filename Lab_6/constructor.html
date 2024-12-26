@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Information</title>
+  </head>
+  <body>
+    <div id="demo"></div>
+
+    <script>
+      class Vehicle {
+        constructor(
+          No_of_Wheels,
+          brand,
+          fuel_type,
+          distance_travelled,
+          fuel_consmed
+        ) {
+          this.No_of_Wheels = No_of_Wheels;
+          this.brand = brand;
+          this.fuel_type = fuel_type;
+          this.distance_travelled = distance_travelled;
+          this.fuel_consmed = fuel_consmed;
+        }
+          
+        MotorBike() {
+          return `Wheel: ${this.No_of_Wheels}, Fuel: ${this.fuel_type}, Distance: ${this.distance_travelled}KM`;
+        }
+        Car() {
+          return `Wheel: ${this.No_of_Wheels}, Fuel: ${this.fuel_type}, Fuel Consumed: ${this.fuel_consmed}LTRS`;
+        }
+      }
+
+      const Gaadi1 = new Vehicle(4, "Honda", "Petrol", 200, 100);
+      const Gaadi2 = new Vehicle(2, "Toyota", "EV", 400, 200);
+      const array = [Gaadi1, Gaadi2];
+
+      const demoDiv = document.getElementById("demo");
+
+      const gaadiInfo1 = document.createElement("p");
+      gaadiInfo1.textContent = Gaadi1.Car();
+      demoDiv.appendChild(gaadiInfo1);
+      
+      const gaadiInfo2 = document.createElement("p");
+      gaadiInfo2.textContent = Gaadi2.MotorBike();
+      demoDiv.appendChild(gaadiInfo2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Toggle</title>
+    <style>
+      #image-container {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      img {
+        width: 200px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="image-container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="Youtube" />
+      <br>
+      <img
+        id="image"
+        src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+        alt="Google"
+      />
+      <br />
+      <button id="toggle-button">Click Me</button>
+    </div>
+
+    <script>
+        function resolveAfter2Seconds() {
+            const imageElement = document.getElementById("image");
+            new Promise((resolve) => setTimeout(resolve, 500));
+
+            imageElement.src ="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png";
+            imageElement.alt = "Facebook";
+            return;
+  }
+      async function toggleImage() {
+         await resolveAfter2Seconds();
+      }
+
+      document.getElementById("toggle-button").addEventListener("click", toggleImage);
+    </script>
+  </body>
+</html>

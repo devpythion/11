@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkerboard</title>
+    <style>
+        body, html {
+            margin: 0;
+            height: 100%;
+        }
+        .white {
+            height: 80px;
+            width: 80px;
+            background-color: #f0d9b5;
+        }
+        .black {
+            height: 80px;
+            width: 80px;
+            background-color: #b58863;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="checkerboard"></div>
+    <script>
+        const container = document.getElementById("checkerboard");
+
+        // Generate a 12x12 checkerboard
+        for (let row = 0; row <=2; row++) {
+            for (let col = 0; col <=2; col++) {
+                const square = document.createElement("div");
+
+                // Alternate colors based on row and column indices
+                if ((row + col) % 2 === 0) {
+                    square.classList.add("black");
+                } else {
+                    square.classList.add("white");
+                }
+
+                container.appendChild(square);
+            }
+        }
+    </script>
+</body>
+</html>

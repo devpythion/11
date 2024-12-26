@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grid Layout</title>
+    <style>
+        
+        /* Define the grid container */
+        #grid {
+            display: grid;
+            padding: 20px;
+            /* Two columns: first auto-sized, second takes remaining space */
+            grid-template-columns: auto 1fr;
+            /* Three rows: first and last auto-sized, middle row fills remaining space */
+            grid-template-rows: auto auto auto auto;
+            gap: 10px; /* Add space between grid items */
+            min-height: 100vh; /* Full viewport height */
+        }
+
+        /* Position grid items */
+        #title {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        #score {
+            grid-column: 1;
+            grid-row: 2;
+            /* align-self: start; */
+        }
+
+        #stats {
+            grid-column: 1;
+            grid-row: 3;
+            /* align-self: start; */
+        }
+
+        #board {
+            grid-column: 2;
+            grid-row: 1 / span 4; /* Span across two rows */
+        }
+
+        #controls {
+            grid-column: 1;
+            grid-row: 4;
+            /* justify-self: center; */
+        }
+
+        /* Add some basic styling for better visibility */
+        #grid > div {
+            color: white;
+            font-size: 2rem;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+            background-color: #a4c443;
+        }
+
+        body {
+            margin: 0; /* Remove default margins */
+        }
+    </style>
+</head>
+<body>
+    <div id="grid">
+        <div id="title">Game Title</div>
+        <div id="score">Score</div>
+        <div id="stats">Stats</div>
+        <div id="board">Board</div>
+        <div id="controls">Controls</div>
+    </div>
+</body>
+</html>

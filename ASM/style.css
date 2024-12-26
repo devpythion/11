@@ -1,0 +1,23 @@
+body{
+    text-align: center;
+    background-color: rgb(90, 217, 109);
+}
+h1{
+    display: inline-block;
+    background-color: aquamarine;
+    padding: 20px 50px;
+}
+form{
+    font-size: 1.5em;
+}
+form input{
+    border: 2px solid red;
+    height: 1.5em;
+    font-size: 0.8em;
+}
+table{
+    font-size: 1.5em;
+    display: inline-block;
+    border: 2px solid red;
+    border-style: solid;
+}
