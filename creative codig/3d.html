@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>p5.js Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.2/lib/p5.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        /* display: block;*/
+        overflow: hidden;
+        cursor: crosshair;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Click and drag the mouse to view the scene from different angles.
+
+      let shape;
+
+      function setup() {
+        createCanvas(1920, 1080,WEBGL);
+
+        // Start building the p5.Geometry object.
+        beginGeometry();
+
+        // Add a cone.
+        cone();
+
+        // Stop building the p5.Geometry object.
+        shape = endGeometry();
+
+        describe("A white cone drawn on a gray background.");
+      }
+
+      function draw() {
+        // background(50);
+
+        // Enable orbiting with the mouse.
+        orbitControl();
+
+        // Turn on the lights.
+        lights();
+
+        // Style the p5.Geometry object.
+        noStroke();
+
+        // Draw the p5.Geometry object.
+        model(shape);
+      }
+    </script>
+  </body>
+</html>

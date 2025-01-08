@@ -55,18 +55,18 @@
     <button id="loadButton">Load Gallery</button>
     <div class="gallery" id="gallery"></div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         const loadButton = document.getElementById('loadButton');
         const gallery = document.getElementById('gallery');
 
         // Replace with your actual Bearer token
-        const bearerToken = 'ff0eaf4ac0a92dc2bc2d84c54b3068';
+        const bearerToken = 'a1a8eb2faebfbca3bb889ff7b8b411';
 
         const graphqlQuery = `
           query {
-            allStudents {
-              fullname
-              imagepath {
+            gallery {
+              images{
                 url
               }
             }
@@ -75,34 +75,28 @@
 
         loadButton.addEventListener('click', async () => {
             try {
-                // Fetch data from the API
-                const response = await fetch('https://graphql.datocms.com/', {
+                // Fetch data from the API using jQuery's AJAX method
+                const response = await $.ajax({
+                    url: 'https://graphql.datocms.com/',  // Replace with your actual GraphQL endpoint
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${bearerToken}`,
                     },
-                    body: JSON.stringify({ query: graphqlQuery }),
+                    data: JSON.stringify({ query: graphqlQuery }),
                 });
 
-                if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
-                }
-
-                const data = await response.json();
-                console.log('Response:', data);
-
-                if (data.errors) {
-                    console.error('GraphQL errors:', data.errors);
-                    alert('An error occurred: ' + data.errors[0].message);
+                if (response.errors) {
+                    console.error('GraphQL errors:', response.errors);
+                    alert('An error occurred: ' + response.errors[0].message);
                     return;
                 }
 
-                if (!data.data || !data.data.allStudents) {
+                if (!response.data || !response.data.gallery) {
                     throw new Error('Unexpected API response structure.');
                 }
 
-                const students = data.data.allStudents;
+                const students = response.data.gallery;
 
                 // Clear the gallery
                 gallery.innerHTML = '';
@@ -110,20 +104,12 @@
                 if (students.length === 0) {
                     gallery.innerHTML = '<p>No students found.</p>';
                 } else {
-                    students.slice(0, 25).forEach(student => {
-                        const galleryItem = document.createElement('div');
-                        galleryItem.className = 'gallery-item';
+                    students.forEach(student => {
+                        const galleryItem = $('<div>').addClass('gallery-item');
 
-                        const img = document.createElement('img');
-                        img.src = student.imagepath?.url || 'https://via.placeholder.com/100?text=No+Image';
-                        img.alt = `${student.fullname}'s profile picture`;
+                        const img = $('<img>').attr('src', student.image?.url || 'https://via.placeholder.com/100?text=No+Image')
 
-                        const name = document.createElement('span');
-                        name.textContent = student.fullname;
-
-                        galleryItem.appendChild(img);
-                        galleryItem.appendChild(name);
-                        gallery.appendChild(galleryItem);
+                        $('#gallery').append(galleryItem);
                     });
                 }
             } catch (error) {

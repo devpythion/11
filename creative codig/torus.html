@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.2/lib/p5.min.js"></script>
+    <style>
+        body{
+            margin: 0;
+            /* display: block;*/
+            overflow: hidden;
+            cursor:crosshair;
+        }
+
+
+    </style>
+</head>
+<body>
+    <script>
+        function setup() {
+            createCanvas(1920, 1080,WEBGL);
+        }
+        function draw() {
+            background(200);
+            fill('green');
+            orbitControl();
+
+            torus();
+        }
+    </script>
+</body>
+</html>

@@ -21,8 +21,8 @@
         }
         .container {
             display: grid;
-            grid-template-columns: repeat(3, 80px);
-            grid-template-rows: repeat(3, 80px);
+            grid-template-columns: repeat(12, 80px);
+            grid-template-rows: repeat(12, 80px);
         }
     </style>
 </head>
@@ -32,8 +32,8 @@
         const container = document.getElementById("checkerboard");
 
         // Generate a 12x12 checkerboard
-        for (let row = 0; row <=2; row++) {
-            for (let col = 0; col <=2; col++) {
+        for (let row = 0; row <=11; row++) {
+            for (let col = 0; col <=11; col++) {
                 const square = document.createElement("div");
 
                 // Alternate colors based on row and column indices

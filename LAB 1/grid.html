@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      nav > ul > li:not(:target):not(:hover) > ul {
+        visibility: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <article id="main">I nteresting Stuff to Read</article>
+      <nav>
+        <ul>
+          <li id="nav−about"><a href="#nav−about">About</a> . . .</li>
+          <li id="nav−projects">
+            <a href="#nav−projects">Projects</a>
+            <ul>
+              <li><a href="...">Art</a></li>
+              <li><a href="...">Architecture</a></li>
+              <li><a href="...">Music</a></li>
+            </ul>
+          </li>
+          <li id="nav−interact"><a href="#nav−interact">Interact</a> . . .</li>
+        </ul>
+      </nav>
+    </div>
+    <footer></footer>
+  </body>
+</html>
